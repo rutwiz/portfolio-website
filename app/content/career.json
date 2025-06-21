@@ -1,0 +1,17 @@
+{
+  "title": "My Career",
+  "timeline": [
+    {
+      "role": "Lead Developer",
+      "company": "Tech Innovations Inc.",
+      "period": "2020 - Present",
+      "description": "Leading the development of cutting-edge web applications."
+    },
+    {
+      "role": "Software Engineer",
+      "company": "Creative Solutions",
+      "period": "2018 - 2020",
+      "description": "Developed and maintained client websites."
+    }
+  ]
+} 

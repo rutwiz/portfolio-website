@@ -1,0 +1,17 @@
+{
+  "title": "My Projects",
+  "projects": [
+    {
+      "name": "Project One",
+      "description": "A description of the first project, highlighting the technologies used and its purpose.",
+      "image": "/images/project1.jpg",
+      "githubLink": "https://github.com/your-username/project-one"
+    },
+    {
+      "name": "Project Two",
+      "description": "A description of the second project, what problems it solves and the outcomes.",
+      "image": "/images/project2.jpg",
+      "githubLink": "https://github.com/your-username/project-two"
+    }
+  ]
+} 
