@@ -53,7 +53,7 @@ function buildStack(
         kind: "participant",
       });
     }
-    let sum = segments.reduce((s, x) => s + x.value, 0);
+    const sum = segments.reduce((s, x) => s + x.value, 0);
     if (segments.length && Math.abs(sum - target) > 1e-6) {
       segments[segments.length - 1].value += target - sum;
     }
