@@ -4,6 +4,8 @@
  * - **Redis (recommended on Vercel):** link Redis in the Vercel project, then
  *   `vercel env pull .env.development.local` so `REDIS_URL` is available locally.
  *   Optional `TRACKER_REDIS_KEY` (default `tracker:state`) for the JSON blob key.
+ *   Each `participants[]` entry may include optional `color` (CSS color string); omit
+ *   or clear to fall back to the hash palette from `participant-color.ts`.
  * - **File:** default on local `next dev` when `REDIS_URL` is unset — `data/tracker.json`.
  * - **Memory:** on Vercel without `REDIS_URL`; resets on cold starts. Force with `TRACKER_STORE=memory`.
  * - **Force file:** `TRACKER_STORE=file` (e.g. local dev without hitting Redis).
@@ -14,7 +16,13 @@ import { createClient } from "redis";
 
 type RedisClient = ReturnType<typeof createClient>;
 
-export type TrackerParticipant = { id: string; name: string; count: number };
+/** `color` is optional in persisted JSON; set in Redis to override hash-based color. */
+export type TrackerParticipant = {
+  id: string;
+  name: string;
+  count: number;
+  color?: string;
+};
 
 export type TrackerHistoryEntry = {
   id: string;
@@ -82,13 +90,36 @@ async function getRedis(): Promise<RedisClient> {
 let memoryStore: TrackerStoreData = { participants: [], history: [] };
 let warnedMemory = false;
 
+function normalizeParticipant(raw: unknown): TrackerParticipant | null {
+  if (!raw || typeof raw !== "object") return null;
+  const r = raw as Record<string, unknown>;
+  const id = typeof r.id === "string" ? r.id : null;
+  const name = typeof r.name === "string" ? r.name : null;
+  if (!id || !name) return null;
+  const count = Number(r.count);
+  const safeCount =
+    Number.isFinite(count) && count >= 0 && Number.isInteger(count)
+      ? count
+      : 0;
+  let color: string | undefined;
+  if (typeof r.color === "string") {
+    const t = r.color.trim();
+    if (t.length > 0) color = t.slice(0, 80);
+  }
+  const out: TrackerParticipant = { id, name, count: safeCount };
+  if (color) out.color = color;
+  return out;
+}
+
 function normalize(data: unknown): TrackerStoreData {
   if (!data || typeof data !== "object") {
     return { participants: [], history: [] };
   }
   const o = data as Partial<TrackerStoreData>;
   const participants = Array.isArray(o.participants)
-    ? (o.participants as TrackerParticipant[])
+    ? (o.participants as unknown[])
+        .map(normalizeParticipant)
+        .filter((p): p is TrackerParticipant => p !== null)
     : [];
   const history = Array.isArray(o.history)
     ? (o.history as TrackerHistoryEntry[])

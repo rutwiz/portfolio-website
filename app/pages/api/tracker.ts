@@ -1,6 +1,7 @@
 import type { NextApiRequest, NextApiResponse } from "next";
 import type { TrackerHistoryEntry, TrackerStoreData } from "@/lib/tracker-store";
 import { loadTrackerStore, saveTrackerStore } from "@/lib/tracker-store";
+import { participantColor } from "@/lib/participant-color";
 
 export type { TrackerParticipant, TrackerHistoryEntry } from "@/lib/tracker-store";
 
@@ -45,14 +46,30 @@ export default async function handler(
   }
 
   if (req.method === "POST") {
-    const name = String((req.body as { name?: string })?.name ?? "").trim();
+    const body = req.body as { name?: string; color?: string };
+    const name = String(body?.name ?? "").trim();
     if (!name) {
       res.status(400).json({ error: "Name required" });
       return;
     }
+    if (name.length > 80) {
+      res.status(400).json({ error: "Name too long" });
+      return;
+    }
     const store = await loadTrackerStore();
     const id = crypto.randomUUID();
-    store.participants.push({ id, name, count: 0 });
+    let color: string | undefined;
+    if (typeof body.color === "string") {
+      const t = body.color.trim();
+      if (t) color = t.slice(0, 80);
+    }
+    const participant = {
+      id,
+      name,
+      count: 0,
+      color: color ?? participantColor(id),
+    };
+    store.participants.push(participant);
     appendHistory(store, {
       type: "add",
       participantId: id,
@@ -61,40 +78,89 @@ export default async function handler(
       newCount: 0,
     });
     await saveTrackerStore(store);
-    res.status(201).json({ participant: { id, name, count: 0 } });
+    res.status(201).json({ participant });
     return;
   }
 
   if (req.method === "PATCH") {
-    const { id, count } = req.body as { id?: string; count?: unknown };
+    const body = req.body as {
+      id?: string;
+      count?: unknown;
+      color?: unknown;
+      name?: unknown;
+    };
+    const { id } = body;
     if (!id || typeof id !== "string") {
       res.status(400).json({ error: "id required" });
       return;
     }
-    const n = Number(count);
-    if (!Number.isFinite(n) || n < 0 || !Number.isInteger(n)) {
-      res.status(400).json({ error: "count must be a non-negative integer" });
+    const hasCount = "count" in body;
+    const hasColor = "color" in body;
+    const hasName = "name" in body;
+    if (!hasCount && !hasColor && !hasName) {
+      res
+        .status(400)
+        .json({ error: "Provide count, name, and/or color to update" });
       return;
     }
+
     const store = await loadTrackerStore();
     const p = store.participants.find((x) => x.id === id);
     if (!p) {
       res.status(404).json({ error: "Not found" });
       return;
     }
-    const previousCount = p.count;
-    if (previousCount === n) {
-      res.status(200).json({ participant: p });
-      return;
+    const countBefore = p.count;
+
+    if (hasName) {
+      const nm = String(body.name ?? "").trim();
+      if (!nm) {
+        res.status(400).json({ error: "name must be non-empty" });
+        return;
+      }
+      if (nm.length > 80) {
+        res.status(400).json({ error: "Name too long" });
+        return;
+      }
+      p.name = nm;
     }
-    p.count = n;
-    appendHistory(store, {
-      type: "update",
-      participantId: id,
-      participantName: p.name,
-      previousCount,
-      newCount: n,
-    });
+
+    if (hasColor) {
+      if (body.color === null) {
+        delete p.color;
+      } else if (typeof body.color === "string") {
+        const t = body.color.trim();
+        if (t === "") delete p.color;
+        else p.color = t.slice(0, 80);
+      } else {
+        res.status(400).json({ error: "color must be a string or null" });
+        return;
+      }
+    }
+
+    if (hasCount) {
+      const n = Number(body.count);
+      if (!Number.isFinite(n) || n < 0 || !Number.isInteger(n)) {
+        res.status(400).json({ error: "count must be a non-negative integer" });
+        return;
+      }
+      if (!hasName && !hasColor && n === countBefore) {
+        res.status(200).json({ participant: p });
+        return;
+      }
+      const previousCount = p.count;
+      if (previousCount !== n) {
+        p.count = n;
+        appendHistory(store, {
+          type: "update",
+          participantId: id,
+          participantName: p.name,
+          previousCount,
+          newCount: n,
+        });
+      }
+    }
+
     await saveTrackerStore(store);
     res.status(200).json({ participant: p });
     return;

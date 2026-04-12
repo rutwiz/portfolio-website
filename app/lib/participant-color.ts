@@ -19,3 +19,13 @@ export function participantColor(participantId: string): string {
   }
   return PALETTE[h % PALETTE.length];
 }
+
+/** Prefer `color` from persisted store (e.g. Redis JSON); otherwise hash from `id`. */
+export function participantDisplayColor(p: {
+  id: string;
+  color?: string | null;
+}): string {
+  const c = typeof p.color === "string" ? p.color.trim() : "";
+  if (c.length > 0) return c.slice(0, 80);
+  return participantColor(p.id);
+}

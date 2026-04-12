@@ -1,10 +1,10 @@
 "use client";
 
 import { useMemo } from "react";
-import { participantColor } from "@/lib/participant-color";
+import { participantDisplayColor } from "@/lib/participant-color";
 import { cn } from "@/lib/utils";
 
-type Participant = { id: string; name: string; count: number };
+type Participant = { id: string; name: string; count: number; color?: string };
 
 type Props = {
   participants: Participant[];
@@ -49,7 +49,7 @@ function buildStack(
         key: `p_${p.id}`,
         label: p.name,
         value: v,
-        color: participantColor(p.id),
+        color: participantDisplayColor(p),
         kind: "participant",
       });
     }
@@ -66,7 +66,7 @@ function buildStack(
       key: `p_${p.id}`,
       label: p.name,
       value: p.count,
-      color: participantColor(p.id),
+      color: participantDisplayColor(p),
       kind: "participant",
     });
   }

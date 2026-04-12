@@ -6,10 +6,10 @@ import Layout from "../components/Layout";
 import { EndOfDayFlipCountdown } from "@/components/tracker/EndOfDayFlipCountdown";
 import { GoalStackedBar } from "@/components/tracker/GoalStackedBar";
 import { Button } from "@/components/ui/button";
-import { participantColor } from "@/lib/participant-color";
+import { participantDisplayColor } from "@/lib/participant-color";
 import { cn } from "@/lib/utils";
 
-type Participant = { id: string; name: string; count: number };
+type Participant = { id: string; name: string; count: number; color?: string };
 
 type HistoryEntry = {
   id: string;
@@ -341,7 +341,9 @@ export default function TrackerPage() {
                           <div className="flex items-center gap-2.5">
                             <span
                               className="h-2.5 w-2.5 shrink-0 rounded-full ring-1 ring-white/15"
-                              style={{ backgroundColor: participantColor(p.id) }}
+                              style={{
+                                backgroundColor: participantDisplayColor(p),
+                              }}
                               aria-hidden
                             />
                             <span className="font-medium text-fg">{p.name}</span>
