@@ -1,1 +1,6 @@
 initial_context.txt
+
+# Local env (e.g. after `vercel env pull`)
+.env
+.env.*
+!.env.example

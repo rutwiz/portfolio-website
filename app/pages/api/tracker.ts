@@ -1,50 +1,16 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import fs from "fs";
-import path from "path";
+import type { TrackerHistoryEntry, TrackerStoreData } from "@/lib/tracker-store";
+import { loadTrackerStore, saveTrackerStore } from "@/lib/tracker-store";
 
-export type TrackerParticipant = { id: string; name: string; count: number };
+export type { TrackerParticipant, TrackerHistoryEntry } from "@/lib/tracker-store";
 
-export type TrackerHistoryEntry = {
-  id: string;
-  ts: string;
-  type: "add" | "update" | "remove";
-  participantId: string;
-  participantName: string;
-  previousCount: number | null;
-  newCount: number | null;
-};
-
-type Store = {
-  participants: TrackerParticipant[];
-  history: TrackerHistoryEntry[];
-};
-
-const DATA_PATH = path.join(process.cwd(), "data", "tracker.json");
 const TARGET = 1000;
 const MAX_HISTORY = 250;
 
-function readStore(): Store {
-  try {
-    const raw = fs.readFileSync(DATA_PATH, "utf-8");
-    const parsed = JSON.parse(raw) as Partial<Store>;
-    const participants = Array.isArray(parsed.participants)
-      ? (parsed.participants as TrackerParticipant[])
-      : [];
-    const history = Array.isArray(parsed.history)
-      ? (parsed.history as TrackerHistoryEntry[])
-      : [];
-    return { participants, history };
-  } catch {
-    return { participants: [], history: [] };
-  }
-}
-
-function writeStore(data: Store) {
-  fs.mkdirSync(path.dirname(DATA_PATH), { recursive: true });
-  fs.writeFileSync(DATA_PATH, JSON.stringify(data, null, 2));
-}
-
-function appendHistory(store: Store, entry: Omit<TrackerHistoryEntry, "id" | "ts"> & { id?: string; ts?: string }) {
+function appendHistory(
+  store: TrackerStoreData,
+  entry: Omit<TrackerHistoryEntry, "id" | "ts"> & { id?: string; ts?: string },
+) {
   const row: TrackerHistoryEntry = {
     id: entry.id ?? crypto.randomUUID(),
     ts: entry.ts ?? new Date().toISOString(),
@@ -60,11 +26,14 @@ function appendHistory(store: Store, entry: Omit<TrackerHistoryEntry, "id" | "ts
   }
 }
 
-export default function handler(req: NextApiRequest, res: NextApiResponse) {
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse,
+) {
   res.setHeader("Cache-Control", "no-store, no-cache, must-revalidate");
 
   if (req.method === "GET") {
-    const store = readStore();
+    const store = await loadTrackerStore();
     const total = store.participants.reduce((s, p) => s + p.count, 0);
     res.status(200).json({
       participants: store.participants,
@@ -81,7 +50,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
       res.status(400).json({ error: "Name required" });
       return;
     }
-    const store = readStore();
+    const store = await loadTrackerStore();
     const id = crypto.randomUUID();
     store.participants.push({ id, name, count: 0 });
     appendHistory(store, {
@@ -91,7 +60,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
       previousCount: null,
       newCount: 0,
     });
-    writeStore(store);
+    await saveTrackerStore(store);
     res.status(201).json({ participant: { id, name, count: 0 } });
     return;
   }
@@ -107,7 +76,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
       res.status(400).json({ error: "count must be a non-negative integer" });
       return;
     }
-    const store = readStore();
+    const store = await loadTrackerStore();
     const p = store.participants.find((x) => x.id === id);
     if (!p) {
       res.status(404).json({ error: "Not found" });
@@ -126,7 +95,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
       previousCount,
       newCount: n,
     });
-    writeStore(store);
+    await saveTrackerStore(store);
     res.status(200).json({ participant: p });
     return;
   }
@@ -137,7 +106,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
       res.status(400).json({ error: "id required" });
       return;
     }
-    const store = readStore();
+    const store = await loadTrackerStore();
     const removed = store.participants.find((x) => x.id === id);
     if (!removed) {
       res.status(404).json({ error: "Not found" });
@@ -151,7 +120,7 @@ export default function handler(req: NextApiRequest, res: NextApiResponse) {
       previousCount: removed.count,
       newCount: null,
     });
-    writeStore(store);
+    await saveTrackerStore(store);
     res.status(204).end();
     return;
   }
