@@ -1,28 +1,36 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
+/* Mood A: midnight sage stoic — semantic tokens (Tailwind v4 @theme) */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-canvas: #0a0810;
+  --color-surface: #14121c;
+  --color-elevated: #1e1b28;
+  --color-border: #2c2738;
+  --color-muted: #9288a3;
+  --color-fg: #f2eef8;
+  --color-accent-sage: #7fb69b;
+  --color-accent-mist: #a3b8e0;
+  --color-accent-gold: #c9a86c;
+  --color-nocturne: #3d3250;
+  /* Legacy accents (tracker / links) */
+  --color-electric-blue: #7eb8ff;
+  --color-sunset-orange: #e07a6e;
+  --color-lush-green: #7ecf8a;
+
+  --font-heading: var(--font-syne), ui-sans-serif, system-ui, sans-serif;
+  --font-body: var(--font-dm-sans), ui-sans-serif, system-ui, sans-serif;
+  /* Logo: --font-major-mono from next/font on root; @theme required for Tailwind v4 font-logo utility */
+  --font-logo: var(--font-major-mono), ui-monospace, "SFMono-Regular", Menlo, monospace;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+:root {
+  --background: #0a0810;
+  --foreground: #f2eef8;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
 }
 
 @tailwind base;
@@ -30,10 +38,28 @@ body {
 @tailwind utilities;
 
 @layer base {
-  body {
-    background-color: #000;
-    color: #fff;
+  html {
+    scroll-behavior: smooth;
   }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+  body {
+    background-color: var(--color-canvas);
+    color: var(--color-fg);
+  }
+}
+
+/* Flip clock (@leenguyen/react-flip-clock-countdown) — match site palette */
+.flip-countdown-tracker {
+  --fcc-background: #1e1b28;
+  --fcc-digit-color: #f2eef8;
+  --fcc-label-color: #9288a3;
+  --fcc-separator-color: #9288a3;
+  --fcc-divider-color: rgba(255, 255, 255, 0.12);
+  --fcc-shadow: 0 2px 12px rgba(0, 0, 0, 0.35);
 }
 
 @layer utilities {
@@ -42,6 +68,14 @@ body {
   }
   .animation-delay-4000 {
     animation-delay: 4s;
+  }
+  /* Landing hero: runs from CSS so first load never waits on React + Framer. */
+  .hero-enter {
+    animation: hero-enter 0.85s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+  .grain {
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.05'/%3E%3C/svg%3E");
+    opacity: 0.35;
   }
 }
 
@@ -57,5 +91,27 @@ body {
   }
   100% {
     transform: translate(0px, 0px) scale(1);
+  }
+}
+
+@keyframes hero-enter {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+    filter: blur(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+    filter: blur(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-blob {
+    animation: none !important;
+  }
+  .hero-enter {
+    animation: none;
   }
 }

@@ -1,0 +1,449 @@
+{
+  "participants": [
+    {
+      "id": "e5238f9f-8e13-4ab7-9124-99c11e45adbb",
+      "name": "Rutwij",
+      "count": 200
+    },
+    {
+      "id": "74445686-9295-422f-be4e-de83ef96bf32",
+      "name": "Dev",
+      "count": 150
+    },
+    {
+      "id": "577e98d7-8f68-4495-b213-9c13e1431ef0",
+      "name": "Vish",
+      "count": 200
+    },
+    {
+      "id": "04efe9e0-fba8-4f84-ad95-d0030be4eb98",
+      "name": "Saurabh",
+      "count": 10
+    }
+  ],
+  "history": [
+    {
+      "id": "0daf5669-3410-457f-970b-9791cfb8df51",
+      "ts": "2026-04-12T05:36:15.609Z",
+      "type": "update",
+      "participantId": "04efe9e0-fba8-4f84-ad95-d0030be4eb98",
+      "participantName": "Saurabh",
+      "previousCount": 600,
+      "newCount": 10
+    },
+    {
+      "id": "9940f56f-8824-48ff-a20b-e4857990c47f",
+      "ts": "2026-04-12T05:36:02.541Z",
+      "type": "update",
+      "participantId": "04efe9e0-fba8-4f84-ad95-d0030be4eb98",
+      "participantName": "Saurabh",
+      "previousCount": 100,
+      "newCount": 600
+    },
+    {
+      "id": "5e8c94bb-18f7-4e8f-8910-8d10c1ac07b5",
+      "ts": "2026-04-12T05:35:55.884Z",
+      "type": "update",
+      "participantId": "04efe9e0-fba8-4f84-ad95-d0030be4eb98",
+      "participantName": "Saurabh",
+      "previousCount": 0,
+      "newCount": 100
+    },
+    {
+      "id": "f5ca13f9-b05f-435a-892c-54b53797e3d5",
+      "ts": "2026-04-12T05:35:52.072Z",
+      "type": "add",
+      "participantId": "04efe9e0-fba8-4f84-ad95-d0030be4eb98",
+      "participantName": "Saurabh",
+      "previousCount": null,
+      "newCount": 0
+    },
+    {
+      "id": "154b1d72-50db-4dac-9e94-9a2e7411a5b3",
+      "ts": "2026-04-12T05:35:45.437Z",
+      "type": "remove",
+      "participantId": "ccda33b3-438b-423e-926f-715d0d565a2e",
+      "participantName": "Saurabh",
+      "previousCount": 300,
+      "newCount": null
+    },
+    {
+      "id": "9ae0facd-fc1e-4606-b376-64495b1bb632",
+      "ts": "2026-04-12T05:35:18.318Z",
+      "type": "update",
+      "participantId": "ccda33b3-438b-423e-926f-715d0d565a2e",
+      "participantName": "Saurabh",
+      "previousCount": 0,
+      "newCount": 300
+    },
+    {
+      "id": "e96cb1e1-0090-4cb3-b41c-d2f4e5548f5d",
+      "ts": "2026-04-12T05:35:14.473Z",
+      "type": "add",
+      "participantId": "ccda33b3-438b-423e-926f-715d0d565a2e",
+      "participantName": "Saurabh",
+      "previousCount": null,
+      "newCount": 0
+    },
+    {
+      "id": "3403acce-5887-4baa-bd49-621803474be1",
+      "ts": "2026-04-12T05:31:58.224Z",
+      "type": "update",
+      "participantId": "577e98d7-8f68-4495-b213-9c13e1431ef0",
+      "participantName": "Vish",
+      "previousCount": 0,
+      "newCount": 200
+    },
+    {
+      "id": "fe1cea3d-2801-41c1-ae9d-f8333340a1f1",
+      "ts": "2026-04-12T05:31:54.437Z",
+      "type": "add",
+      "participantId": "577e98d7-8f68-4495-b213-9c13e1431ef0",
+      "participantName": "Vish",
+      "previousCount": null,
+      "newCount": 0
+    },
+    {
+      "id": "513109a3-1bcc-49cd-9efb-dfde22a8b6f1",
+      "ts": "2026-04-12T05:31:48.047Z",
+      "type": "update",
+      "participantId": "74445686-9295-422f-be4e-de83ef96bf32",
+      "participantName": "Dev",
+      "previousCount": 0,
+      "newCount": 150
+    },
+    {
+      "id": "42ef97b3-5f3c-4937-8e91-17a11e993a4b",
+      "ts": "2026-04-12T05:31:42.869Z",
+      "type": "add",
+      "participantId": "74445686-9295-422f-be4e-de83ef96bf32",
+      "participantName": "Dev",
+      "previousCount": null,
+      "newCount": 0
+    },
+    {
+      "id": "d86940df-2aa1-4cb2-a426-4caf04036eab",
+      "ts": "2026-04-12T05:31:38.862Z",
+      "type": "update",
+      "participantId": "e5238f9f-8e13-4ab7-9124-99c11e45adbb",
+      "participantName": "Rutwij",
+      "previousCount": 0,
+      "newCount": 200
+    },
+    {
+      "id": "67dccc58-d4ec-48de-bb0f-e0ac74982411",
+      "ts": "2026-04-12T05:31:34.808Z",
+      "type": "add",
+      "participantId": "e5238f9f-8e13-4ab7-9124-99c11e45adbb",
+      "participantName": "Rutwij",
+      "previousCount": null,
+      "newCount": 0
+    },
+    {
+      "id": "9e06cd06-7e29-41de-88ec-5acc7cad3c05",
+      "ts": "2026-04-12T05:31:31.328Z",
+      "type": "remove",
+      "participantId": "46149c3b-9973-4821-81f6-4dc89aa3302e",
+      "participantName": "Devendra",
+      "previousCount": 200,
+      "newCount": null
+    },
+    {
+      "id": "b31ea650-8b7c-4433-b340-943ea5717a40",
+      "ts": "2026-04-12T05:31:29.374Z",
+      "type": "remove",
+      "participantId": "13c8154e-1215-4e15-93f3-c9e263415406",
+      "participantName": "Rutwij",
+      "previousCount": 100,
+      "newCount": null
+    },
+    {
+      "id": "563721f6-d941-4f1f-ba26-a711941338f4",
+      "ts": "2026-04-12T05:30:45.220Z",
+      "type": "update",
+      "participantId": "46149c3b-9973-4821-81f6-4dc89aa3302e",
+      "participantName": "Devendra",
+      "previousCount": 0,
+      "newCount": 200
+    },
+    {
+      "id": "52ec7a33-8282-4b8e-9f20-503626f26426",
+      "ts": "2026-04-12T05:30:39.300Z",
+      "type": "add",
+      "participantId": "46149c3b-9973-4821-81f6-4dc89aa3302e",
+      "participantName": "Devendra",
+      "previousCount": null,
+      "newCount": 0
+    },
+    {
+      "id": "d7e6ef4d-f229-40b4-9042-c2f534a7ea7d",
+      "ts": "2026-04-12T05:28:29.247Z",
+      "type": "update",
+      "participantId": "13c8154e-1215-4e15-93f3-c9e263415406",
+      "participantName": "Rutwij",
+      "previousCount": 0,
+      "newCount": 100
+    },
+    {
+      "id": "89002fc4-ff01-44eb-bb49-ece97001b8bd",
+      "ts": "2026-04-12T05:28:25.743Z",
+      "type": "add",
+      "participantId": "13c8154e-1215-4e15-93f3-c9e263415406",
+      "participantName": "Rutwij",
+      "previousCount": null,
+      "newCount": 0
+    },
+    {
+      "id": "a6d9e0b0-9dd1-4922-b44e-50dd155e71c8",
+      "ts": "2026-04-12T05:28:18.313Z",
+      "type": "remove",
+      "participantId": "86234eef-0db7-42ab-846b-e1e2f80d9be2",
+      "participantName": "Saurabh",
+      "previousCount": 300,
+      "newCount": null
+    },
+    {
+      "id": "017f952e-76ed-4960-baf8-98c564de5a77",
+      "ts": "2026-04-12T05:28:16.866Z",
+      "type": "remove",
+      "participantId": "852c2428-235d-4558-b529-01405fcae90a",
+      "participantName": "Vishal",
+      "previousCount": 100,
+      "newCount": null
+    },
+    {
+      "id": "74d99e6d-0035-4f50-88a9-25fa9cb3d2d5",
+      "ts": "2026-04-12T05:27:55.215Z",
+      "type": "remove",
+      "participantId": "7c9cfcc6-71a1-42eb-a9df-395c89a0487c",
+      "participantName": "Rutwij",
+      "previousCount": 200,
+      "newCount": null
+    },
+    {
+      "id": "d3c0c369-d28c-47a9-8976-68e26a5f0ca7",
+      "ts": "2026-04-12T05:26:58.537Z",
+      "type": "update",
+      "participantId": "86234eef-0db7-42ab-846b-e1e2f80d9be2",
+      "participantName": "Saurabh",
+      "previousCount": 0,
+      "newCount": 300
+    },
+    {
+      "id": "a0d0ccda-243c-4faf-9f96-6aa106961f89",
+      "ts": "2026-04-12T05:26:54.656Z",
+      "type": "add",
+      "participantId": "86234eef-0db7-42ab-846b-e1e2f80d9be2",
+      "participantName": "Saurabh",
+      "previousCount": null,
+      "newCount": 0
+    },
+    {
+      "id": "9277f5d2-3abf-4c01-a104-59584c41bd92",
+      "ts": "2026-04-12T05:24:14.665Z",
+      "type": "update",
+      "participantId": "852c2428-235d-4558-b529-01405fcae90a",
+      "participantName": "Vishal",
+      "previousCount": 0,
+      "newCount": 100
+    },
+    {
+      "id": "098acdc2-2d7d-406b-9c8f-ea43cf3d3c96",
+      "ts": "2026-04-12T05:24:11.834Z",
+      "type": "add",
+      "participantId": "852c2428-235d-4558-b529-01405fcae90a",
+      "participantName": "Vishal",
+      "previousCount": null,
+      "newCount": 0
+    },
+    {
+      "id": "fbddc5be-b6e0-45d6-a3cd-ce3ae91c8c5d",
+      "ts": "2026-04-12T05:24:07.455Z",
+      "type": "update",
+      "participantId": "7c9cfcc6-71a1-42eb-a9df-395c89a0487c",
+      "participantName": "Rutwij",
+      "previousCount": 0,
+      "newCount": 200
+    },
+    {
+      "id": "01f57686-f36e-4fa8-9457-a32fbd9d00f3",
+      "ts": "2026-04-12T05:24:03.774Z",
+      "type": "add",
+      "participantId": "7c9cfcc6-71a1-42eb-a9df-395c89a0487c",
+      "participantName": "Rutwij",
+      "previousCount": null,
+      "newCount": 0
+    },
+    {
+      "id": "25dc55cf-9727-4672-8352-17b20024dcb2",
+      "ts": "2026-04-12T05:23:57.772Z",
+      "type": "remove",
+      "participantId": "6621667f-75e4-487f-9db5-8bce8156cf06",
+      "participantName": "Vishal",
+      "previousCount": 500,
+      "newCount": null
+    },
+    {
+      "id": "9111bf92-3c29-481f-aaca-46fb9273e3e6",
+      "ts": "2026-04-12T05:23:56.597Z",
+      "type": "remove",
+      "participantId": "127adbf4-a12a-4860-aae0-51f4196ec864",
+      "participantName": "Devendra",
+      "previousCount": 200,
+      "newCount": null
+    },
+    {
+      "id": "f12d3202-ebe2-465d-a4b0-69cc5364863a",
+      "ts": "2026-04-12T05:23:54.858Z",
+      "type": "remove",
+      "participantId": "9555ae5c-9c65-4e7f-b116-0015dc9b9648",
+      "participantName": "Rutwij",
+      "previousCount": 400,
+      "newCount": null
+    },
+    {
+      "id": "7966492b-df54-4be7-80ac-a5f665c0be63",
+      "ts": "2026-04-12T05:23:18.309Z",
+      "type": "update",
+      "participantId": "9555ae5c-9c65-4e7f-b116-0015dc9b9648",
+      "participantName": "Rutwij",
+      "previousCount": 100,
+      "newCount": 400
+    },
+    {
+      "id": "7720a9c6-a019-452f-9df8-3885fec9455d",
+      "ts": "2026-04-12T05:22:26.945Z",
+      "type": "update",
+      "participantId": "6621667f-75e4-487f-9db5-8bce8156cf06",
+      "participantName": "Vishal",
+      "previousCount": 0,
+      "newCount": 500
+    },
+    {
+      "id": "17bd1872-f0fb-4efb-9dcd-5707023e96f5",
+      "ts": "2026-04-12T05:22:22.697Z",
+      "type": "add",
+      "participantId": "6621667f-75e4-487f-9db5-8bce8156cf06",
+      "participantName": "Vishal",
+      "previousCount": null,
+      "newCount": 0
+    },
+    {
+      "id": "566037a7-b152-45c0-a1ff-4de43c6c3156",
+      "ts": "2026-04-12T05:22:14.815Z",
+      "type": "update",
+      "participantId": "127adbf4-a12a-4860-aae0-51f4196ec864",
+      "participantName": "Devendra",
+      "previousCount": 0,
+      "newCount": 200
+    },
+    {
+      "id": "0265280d-f046-4484-9531-c726df8295fe",
+      "ts": "2026-04-12T05:22:06.368Z",
+      "type": "add",
+      "participantId": "127adbf4-a12a-4860-aae0-51f4196ec864",
+      "participantName": "Devendra",
+      "previousCount": null,
+      "newCount": 0
+    },
+    {
+      "id": "f64204a9-545e-4e4a-8783-cfcebe370d71",
+      "ts": "2026-04-12T05:21:57.727Z",
+      "type": "update",
+      "participantId": "9555ae5c-9c65-4e7f-b116-0015dc9b9648",
+      "participantName": "Rutwij",
+      "previousCount": 0,
+      "newCount": 100
+    },
+    {
+      "id": "e62db9dd-2573-4e41-a303-a1e68fd886d4",
+      "ts": "2026-04-12T05:21:51.974Z",
+      "type": "add",
+      "participantId": "9555ae5c-9c65-4e7f-b116-0015dc9b9648",
+      "participantName": "Rutwij",
+      "previousCount": null,
+      "newCount": 0
+    },
+    {
+      "id": "924cdb55-672c-4fa0-8195-3f45c793920a",
+      "ts": "2026-04-12T05:21:24.242Z",
+      "type": "remove",
+      "participantId": "0676360f-93e3-48b7-8f49-d8907254eff8",
+      "participantName": "Devendra",
+      "previousCount": 10,
+      "newCount": null
+    },
+    {
+      "id": "f57958b7-0412-482d-aa5f-8b7b25c9718e",
+      "ts": "2026-04-12T05:20:05.323Z",
+      "type": "update",
+      "participantId": "0676360f-93e3-48b7-8f49-d8907254eff8",
+      "participantName": "Devendra",
+      "previousCount": 200,
+      "newCount": 10
+    },
+    {
+      "id": "7141f110-21b2-4a65-9b74-652e88f67b26",
+      "ts": "2026-04-12T05:20:00.786Z",
+      "type": "remove",
+      "participantId": "3cf9f23d-6d85-48d4-8dc1-bfeea2a4ffd0",
+      "participantName": "Pritish",
+      "previousCount": 100,
+      "newCount": null
+    },
+    {
+      "id": "06dbbfc2-5c33-4779-9f4b-58bef1cd8c02",
+      "ts": "2026-04-12T05:19:59.402Z",
+      "type": "remove",
+      "participantId": "8ea86ad3-f141-41df-91a0-2782f269ea1f",
+      "participantName": "Rutwij",
+      "previousCount": 400,
+      "newCount": null
+    },
+    {
+      "id": "9e117f38-3f6f-4bb4-9926-85e033b6bb72",
+      "ts": "2026-04-12T05:19:51.328Z",
+      "type": "update",
+      "participantId": "8ea86ad3-f141-41df-91a0-2782f269ea1f",
+      "participantName": "Rutwij",
+      "previousCount": 40,
+      "newCount": 400
+    },
+    {
+      "id": "1de60c80-d2ee-4109-9396-300a1515b06c",
+      "ts": "2026-04-12T05:15:25.932Z",
+      "type": "update",
+      "participantId": "0676360f-93e3-48b7-8f49-d8907254eff8",
+      "participantName": "Devendra",
+      "previousCount": 0,
+      "newCount": 200
+    },
+    {
+      "id": "6bdda0b4-5f23-4233-9ee9-9184930ab079",
+      "ts": "2026-04-12T05:15:19.795Z",
+      "type": "add",
+      "participantId": "0676360f-93e3-48b7-8f49-d8907254eff8",
+      "participantName": "Devendra",
+      "previousCount": null,
+      "newCount": 0
+    },
+    {
+      "id": "410e3245-b5b8-463a-9a3a-1b3df756f026",
+      "ts": "2026-04-12T05:07:40.453Z",
+      "type": "update",
+      "participantId": "3cf9f23d-6d85-48d4-8dc1-bfeea2a4ffd0",
+      "participantName": "Pritish",
+      "previousCount": 0,
+      "newCount": 100
+    },
+    {
+      "id": "e311240d-8f6a-43a7-8c92-870800cc5653",
+      "ts": "2026-04-12T05:07:35.010Z",
+      "type": "add",
+      "participantId": "3cf9f23d-6d85-48d4-8dc1-bfeea2a4ffd0",
+      "participantName": "Pritish",
+      "previousCount": null,
+      "newCount": 0
+    }
+  ]
+}

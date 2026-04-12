@@ -1,14 +1,16 @@
-import SocialIcons from './SocialIcons';
+import SocialIcons from "./SocialIcons";
 
 const Footer = () => {
   return (
-    <footer className="p-4 mt-8">
-      <div className="container mx-auto text-center">
+    <footer className="mt-auto border-t border-border/60 bg-canvas/30 py-10 backdrop-blur-sm">
+      <div className="container mx-auto px-4 text-center">
         <SocialIcons />
-        <p className="mt-4 text-sm">&copy; {new Date().getFullYear()} Lord Rutwij. All Rights Reserved.</p>
+        <p className="mt-6 text-xs text-muted">
+          &copy; {new Date().getFullYear()} The Rutwij. All rights reserved.
+        </p>
       </div>
     </footer>
   );
 };
 
-export default Footer; 
+export default Footer;
