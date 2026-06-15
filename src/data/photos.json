@@ -1,0 +1,98 @@
+[
+  {
+    "id": "ph-01",
+    "src": "IMG20220610130951.jpg",
+    "alt": "A dog resting on stone steps in Kashmir",
+    "caption": "I wonder what da dog thinkin'",
+    "location": "Kashmir, India",
+    "date": "2022"
+  },
+  {
+    "id": "ph-02",
+    "src": "IMG20220610132749.jpg",
+    "alt": "A bird perched among greenery in Kashmir",
+    "caption": "I wonder what da bird thinkin'",
+    "location": "Kashmir, India",
+    "date": "2022"
+  },
+  {
+    "id": "ph-03",
+    "src": "IMG20220611062315.jpg",
+    "alt": "A calm lake surrounded by hills in Kashmir",
+    "caption": "Lakes are always serene",
+    "location": "Kashmir, India",
+    "date": "2022"
+  },
+  {
+    "id": "ph-04",
+    "src": "IMG20220611093126.jpg",
+    "alt": "Colourful scene in Kashmir",
+    "caption": "Colourful!",
+    "location": "Kashmir, India",
+    "date": "2022"
+  },
+  {
+    "id": "ph-05",
+    "src": "IMG20220612101801.jpg",
+    "alt": "A flock of sheep being herded along a mountain road",
+    "caption": "Sheep are not as dumb as they look",
+    "location": "Kashmir, India",
+    "date": "2022"
+  },
+  {
+    "id": "ph-06",
+    "src": "IMG20220612124527.jpg",
+    "alt": "A green valley with pine forests, a river, and snow-capped peaks",
+    "caption": "And instantly you feel so small!",
+    "location": "Kashmir, India",
+    "date": "2022"
+  },
+  {
+    "id": "ph-07",
+    "src": "IMG20220613130733.jpg",
+    "alt": "A hand holding a large animal leg bone against barren mountain slopes",
+    "caption": "The roads are deadly!",
+    "location": "Ladakh, India",
+    "date": "2022"
+  },
+  {
+    "id": "ph-08",
+    "src": "IMG20220613180150.jpg",
+    "alt": "A straight highway cutting through a high-altitude desert landscape",
+    "caption": "The road goes on forever",
+    "location": "Ladakh, India",
+    "date": "2022"
+  },
+  {
+    "id": "ph-09",
+    "src": "IMG20220613185710.jpg",
+    "alt": "A wide river flowing between steep rocky mountains under a blue sky",
+    "caption": "Shades of blue!",
+    "location": "Ladakh, India",
+    "date": "2022"
+  },
+  {
+    "id": "ph-10",
+    "src": "IMG20220615160012.jpg",
+    "alt": "A Himalayan marmot peeking out of its burrow in rocky grassland",
+    "caption": "I wonder what da marmot thinkin'",
+    "location": "Ladakh, India",
+    "date": "2022"
+  },
+  {
+    "id": "ph-11",
+    "src": "IMG20220615164047.jpg",
+    "alt": "A deep blue high-altitude lake surrounded by rugged mountains",
+    "caption": "That shade of blue doesn't exist in cities",
+    "location": "Ladakh, India",
+    "date": "2022"
+  },
+  {
+    "id": "ph-12",
+    "src": "IMG20220617072744.jpg",
+    "alt": "Breakfast of tea and toast on a plate with mountains in the background",
+    "caption": "Nothing better than a buttered toast!",
+    "location": "Ladakh, India",
+    "date": "2022"
+  }
+]

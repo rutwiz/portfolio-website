@@ -1,0 +1,111 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import SocialLinks from "@/components/SocialLinks.astro";
+
+interface TimelineEntry {
+  role: string;
+  company: string;
+  period: string;
+  description: string;
+}
+
+const timeline: TimelineEntry[] = [
+  {
+    role: "Member of Technical Staff",
+    company: "Nutanix Inc.",
+    period: "2025 — Present",
+    description:
+      "Researching CloudnativePG OSS - Solving Platform Engineering Problems - Tinkering with AI"
+  },
+  {
+    role: "Software Engineer",
+    company: "Flipkart Pvt. Ltd.",
+    period: "2022 — 2025",
+    description:
+      "Built and Maintained Large Scale Order Processing for Flipkart Sellers - Built Competency with Distributed Systems - Understood the E-commerce Business",
+  },
+  {
+    role: "Intern",
+    company: "Amazon Inc.",
+    period: "2021 — 2021",
+    description:
+      "XOR Orchestrator Team - Core Transportation - Introduction to Large Scale Systems and Complexities",
+  }
+];
+---
+
+<BaseLayout
+  title="About"
+  description="About Rutwij — software engineer who also writes, shoots photography, and makes videos."
+>
+  <section class="container-prose py-16 sm:py-20">
+    <p class="eyebrow">// about</p>
+    <h1 class="mt-3 font-mono text-3xl font-semibold tracking-tight sm:text-4xl">
+      Hi, I'm Rutwij
+    </h1>
+
+    <div class="mt-10 flex flex-col gap-8 sm:flex-row sm:items-start sm:gap-10">
+      <img
+        src="/images/rutwij-avatar.jpg"
+        alt="Rutwij"
+        class="h-28 w-28 shrink-0 rounded-full border border-border object-cover"
+      />
+      <div class="space-y-4 leading-relaxed text-muted">
+        <p>
+          I grew into being a Software Engineer - but my life expands so much beyond that
+        </p>
+        <p>
+          I am a tech savvy guy guided by my curiosity and the thrill of it. In my natural habitat,
+          I go for rides on my bike, or tuck in with a good book to battle ideas with philosophers.
+        </p>
+        <p>
+          When my curiosity pairs with my creativity - I dabble with almost everything
+          Art. Music. Photography. Videography. Games. Sports. Tech.
+        </p>
+        <p>
+          But most of all, I like wondering what is the point of this all!
+        </p>
+        <p>
+          Between juggling work, managing reponsibilites and missing the gym - I take out the time to enjoy the little things.
+          On this digital island of mine, I get to showcase myself and all my creative outlets.
+        </p>
+        <p>
+          This website starts off as a repository of my ideas. Who knows where it'll go.
+        </p>
+        <p>
+          Recently, I'm trying to become more ambitious and discplined.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="container-prose py-12 sm:py-16">
+    <h2 class="eyebrow">// career</h2>
+
+    <ol class="mt-8 space-y-8 border-l border-border">
+      {
+        timeline.map((entry) => (
+          <li class="relative pl-6">
+            <span
+              class="absolute -left-[5px] top-2 h-2.5 w-2.5 rounded-full border border-border bg-accent"
+              aria-hidden="true"
+            />
+            <p class="font-mono text-sm text-faint">{entry.period}</p>
+            <p class="mt-1 font-mono text-fg">
+              {entry.role}
+              <span class="text-faint"> · </span>
+              <span class="text-accent">{entry.company}</span>
+            </p>
+            <p class="mt-2 text-muted">{entry.description}</p>
+          </li>
+        ))
+      }
+    </ol>
+  </section>
+
+  <section class="container-prose py-12 sm:py-16">
+    <h2 class="eyebrow">// elsewhere</h2>
+    <p class="mt-4 text-muted">Find me around the internet.</p>
+    <SocialLinks class="mt-6" withHandle />
+  </section>
+</BaseLayout>

@@ -1,0 +1,98 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import { site } from "@/lib/site";
+import { formatDate } from "@/lib/utils";
+
+const posts = (await getCollection("blog"))
+  .filter((p) => !p.data.draft)
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
+
+const explore = [
+  { href: "/work", title: "Work", blurb: "Projects & experiments" },
+  { href: "/media", title: "Media", blurb: "Photography & video" },
+  { href: "/about", title: "About", blurb: "Who I am" },
+];
+---
+
+<BaseLayout
+  title="Home"
+  description="Personal site of Rutwij"
+>
+  <section class="container-page py-20 sm:py-28">
+    <p class="font-mono text-sm text-muted">
+      <span class="text-accent">$</span> whoami
+    </p>
+    <h1
+      class="mt-4 font-mono text-5xl font-semibold tracking-tight sm:text-6xl"
+    >
+      {site.name}
+    </h1>
+    <p class="mt-5 max-w-xl text-lg text-muted">
+      Human. Philosopher. Creator. Software Engineer. - In that order.
+      Making notes, starting projects, and documenting my journey one day at a time.
+    </p>
+  </section>
+
+  <section class="container-page py-12 sm:py-16">
+    <div class="flex items-baseline justify-between gap-4">
+      <h2 class="eyebrow">// latest writing</h2>
+      <a
+        href="/blog"
+        class="font-mono text-sm text-muted transition-colors hover:text-accent"
+      >
+        All posts -&gt;
+      </a>
+    </div>
+
+    {
+      posts.length > 0 ? (
+        <ul class="mt-8 space-y-8">
+          {posts.map((post) => (
+            <li class="group">
+              <article>
+                <time
+                  datetime={post.data.pubDate.toISOString()}
+                  class="font-mono text-xs text-muted"
+                >
+                  {formatDate(post.data.pubDate)}
+                </time>
+                <h3 class="mt-1 text-xl font-medium">
+                  <a
+                    href={`/blog/${post.id}`}
+                    class="transition-colors hover:text-accent"
+                  >
+                    {post.data.title}
+                  </a>
+                </h3>
+                <p class="mt-1 text-muted">{post.data.description}</p>
+              </article>
+            </li>
+          ))}
+        </ul>
+      ) : (
+        <p class="mt-8 text-muted">Posts coming soon.</p>
+      )
+    }
+  </section>
+
+  <section class="container-page py-12 sm:py-16">
+    <h2 class="eyebrow">// explore</h2>
+    <ul class="mt-8 grid gap-4 sm:grid-cols-3">
+      {
+        explore.map((item) => (
+          <li>
+            <a
+              href={item.href}
+              class="block rounded-lg border border-border p-5 transition-colors hover:border-accent"
+            >
+              <span class="font-mono text-base font-medium">{item.title}</span>
+              <span class="mt-1 block text-sm text-muted">{item.blurb}</span>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+</BaseLayout>

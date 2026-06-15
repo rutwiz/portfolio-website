@@ -1,0 +1,88 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  tech?: string[];
+  repo?: string;
+  link?: string;
+  year?: string;
+  status: "active" | "archived";
+}
+
+const {
+  title,
+  description,
+  tech = [],
+  repo,
+  link,
+  year,
+  status,
+} = Astro.props;
+
+const isInternalLink = typeof link === "string" && link.startsWith("/");
+---
+
+<article
+  class="group flex flex-col rounded-lg border border-border p-5 transition-colors hover:border-accent"
+>
+  <div class="flex items-center justify-between gap-2">
+    {year && <p class="font-mono text-xs text-faint">{year}</p>}
+    {
+      status === "archived" && (
+        <span class="rounded-full border border-border px-2 py-0.5 font-mono text-xs text-faint">
+          archived
+        </span>
+      )
+    }
+  </div>
+
+  <h3 class="mt-2 font-mono text-lg tracking-tight text-fg">{title}</h3>
+  <p class="mt-2 text-muted">{description}</p>
+
+  {
+    tech.length > 0 && (
+      <ul class="mt-4 flex flex-wrap gap-2" aria-label="Tech stack">
+        {tech.map((t) => (
+          <li class="rounded border border-border px-2 py-0.5 font-mono text-xs text-faint">
+            {t}
+          </li>
+        ))}
+      </ul>
+    )
+  }
+
+  {
+    (repo || link) && (
+      <div class="mt-5 flex flex-wrap gap-4 font-mono text-sm">
+        {repo && (
+          <a
+            href={repo}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-accent transition-opacity hover:opacity-80"
+          >
+            GitHub &rarr;
+          </a>
+        )}
+        {link &&
+          (isInternalLink ? (
+            <a
+              href={link}
+              class="text-accent transition-opacity hover:opacity-80"
+            >
+              View &rarr;
+            </a>
+          ) : (
+            <a
+              href={link}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="text-accent transition-opacity hover:opacity-80"
+            >
+              View &rarr;
+            </a>
+          ))}
+      </div>
+    )
+  }
+</article>

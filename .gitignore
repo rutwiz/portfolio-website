@@ -1,6 +1,25 @@
-initial_context.txt
+# build output
+dist/
+# generated types
+.astro/
 
-# Local env (e.g. after `vercel env pull`)
+# dependencies
+node_modules/
+
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# environment variables
 .env
 .env.*
 !.env.example
+
+# macOS / editor
+.DS_Store
+*.local
+
+# misc
+initial_context.txt

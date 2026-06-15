@@ -1,0 +1,22 @@
+---
+import { site } from "@/lib/site";
+import SocialLinks from "./SocialLinks.astro";
+
+const year = new Date().getFullYear();
+---
+
+<footer class="mt-24 border-t border-border">
+  <div
+    class="container-page flex flex-col items-start justify-between gap-6 py-10 sm:flex-row sm:items-center"
+  >
+    <div>
+      <p class="font-mono text-sm text-fg">
+        <span class="text-accent">~/</span>{site.wordmark}
+      </p>
+      <p class="mt-1 text-sm text-muted">
+        &copy; {year} {site.author}. Built with Astro.
+      </p>
+    </div>
+    <SocialLinks />
+  </div>
+</footer>

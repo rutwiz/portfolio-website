@@ -1,0 +1,41 @@
+---
+import { formatDate } from "@/lib/utils";
+
+interface Props {
+  title: string;
+  description: string;
+  pubDate: Date;
+  tags?: string[];
+  id: string;
+}
+
+const { title, description, pubDate, tags = [], id } = Astro.props;
+---
+
+<article
+  class="group rounded-lg border border-border bg-surface p-5 transition-colors hover:border-accent sm:p-6"
+>
+  <p class="font-mono text-sm text-muted">
+    <time datetime={pubDate.toISOString()}>{formatDate(pubDate)}</time>
+  </p>
+  <h3 class="mt-2 font-mono text-lg tracking-tight">
+    <a
+      href={`/blog/${id}`}
+      class="transition-colors hover:text-accent focus-visible:text-accent"
+    >
+      {title}
+    </a>
+  </h3>
+  <p class="mt-2 text-muted">{description}</p>
+  {
+    tags.length > 0 && (
+      <ul class="mt-4 flex flex-wrap gap-2" aria-label="Tags">
+        {tags.map((tag) => (
+          <li class="rounded border border-border px-2 py-0.5 font-mono text-xs text-faint">
+            {tag}
+          </li>
+        ))}
+      </ul>
+    )
+  }
+</article>

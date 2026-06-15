@@ -1,0 +1,53 @@
+---
+import { nav, site } from "@/lib/site";
+import ThemeToggle from "./ThemeToggle.astro";
+
+const path = Astro.url.pathname;
+function isActive(href: string) {
+  if (href === "/") return path === "/";
+  return path === href || path.startsWith(href + "/");
+}
+---
+
+<header
+  class="sticky top-0 z-50 border-b border-border bg-bg/80 backdrop-blur-md"
+>
+  <nav
+    class="container-page flex h-16 items-center justify-between gap-4"
+    aria-label="Primary"
+  >
+    <a
+      href="/"
+      class="font-mono text-base font-semibold tracking-tight text-fg transition-colors hover:text-accent"
+    >
+      <span class="text-accent">~/</span>{site.wordmark}
+    </a>
+
+    <div class="flex items-center gap-1 sm:gap-2">
+      <ul class="flex items-center gap-0.5 sm:gap-1">
+        {
+          nav
+            .filter((item) => item.href !== "/")
+            .map((item) => (
+              <li>
+                <a
+                  href={item.href}
+                  aria-current={isActive(item.href) ? "page" : undefined}
+                  class:list={[
+                    "rounded-md px-2.5 py-1.5 font-mono text-sm transition-colors sm:px-3",
+                    isActive(item.href)
+                      ? "text-accent"
+                      : "text-muted hover:text-fg",
+                  ]}
+                >
+                  {item.label}
+                </a>
+              </li>
+            ))
+        }
+      </ul>
+      <span class="mx-1 h-5 w-px bg-border" aria-hidden="true"></span>
+      <ThemeToggle />
+    </div>
+  </nav>
+</header>

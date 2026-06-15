@@ -1,0 +1,37 @@
+[
+  {
+    "id": "vid-01",
+    "youtubeId": "DW0XUsyBBuY",
+    "title": "The Gen Alpha Melody",
+    "description": "Interesting video on a very famous melody",
+    "date": "2026"
+  },
+  {
+    "id": "vid-02",
+    "youtubeId": "DVtcZQ2QdBg",
+    "title": "10 Ways to Build an Unfair Advantage in Your 20s",
+    "description": "Interesting video about this person's journey to fulfilment",
+    "date": "2026"
+  },
+  {
+    "id": "vid-03",
+    "youtubeId": "DHoQMmzKy60",
+    "title": "A Ferrari, Ice-cream and why I don't like Alienkind | Indiranagar Vlog | July '25",
+    "description": "Casual vlog in Indiranagar, Bangalore",
+    "date": "2026"
+  },
+  {
+    "id": "vid-04",
+    "youtubeId": "qRHxI48Aw_I",
+    "title": "Around Bangalore | Day Trip Vlog | March 2026",
+    "description": "Short trip to a dried up waterfall",
+    "date": "2026"
+  },
+  {
+    "id": "vid-05",
+    "youtubeId": "HfUb4QQ5LV0",
+    "title": "Adiyogi Ride | Honda H'Ness 350",
+    "description": "Ride & Music - what else",
+    "date": "2025"
+  }
+]

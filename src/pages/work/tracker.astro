@@ -1,0 +1,35 @@
+---
+import BaseLayout from "@/layouts/BaseLayout.astro";
+import Tracker from "@/components/tracker/Tracker.tsx";
+---
+
+<BaseLayout
+  title="Push-up Tracker"
+  description="A frozen, read-only snapshot of a small group push-up challenge tracker."
+>
+  <section class="container-page py-16 sm:py-20">
+    <p class="eyebrow">// archived project</p>
+    <h1 class="mt-3 font-mono text-3xl tracking-tight sm:text-4xl">
+      Push-up Challenge Tracker
+    </h1>
+    <p class="mt-4 max-w-prose text-muted">
+      This was a small group push-up challenge tracker — originally a live app
+      backed by a Redis instance that a few friends and I updated in real time.
+      That backend is long gone, so what you see here is a frozen, read-only
+      snapshot kept purely for posterity.
+    </p>
+
+    <p class="mt-6">
+      <a
+        href="/work"
+        class="font-mono text-sm text-accent transition-opacity hover:opacity-80"
+      >
+        &larr; All work
+      </a>
+    </p>
+
+    <div class="mt-10 rounded-xl border border-border bg-surface p-6">
+      <Tracker client:visible />
+    </div>
+  </section>
+</BaseLayout>
